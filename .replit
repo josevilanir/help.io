@@ -1,4 +1,6 @@
 run = "csc ./Projeto4/main.cs ./Projeto4/Voluntario.cs ./Projeto4/Comentario.cs ./Projeto4/acao.cs ./Projeto4/Sistema.cs ./Projeto4/Inscricao.cs ./Projeto4/arquivo.cs -out:Main.exe; mono Main.exe"
+entrypoint = "main.cs"
+hidden = ["bin", "obj"]
 
 [nix]
 channel = "stable-22_11"
@@ -12,3 +14,14 @@ language = "dotnet"
 
 [packager.features]
 packageSearch = true
+
+[languages]
+
+[languages.csharp]
+pattern = "**/*.cs"
+
+[languages.csharp.languageServer]
+start = ["OmniSharp", "--languageserver"]
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
